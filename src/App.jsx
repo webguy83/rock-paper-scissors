@@ -5,6 +5,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Container from '@mui/material/Container';
 import Header from 'components/Header';
+import Gameboard from 'components/Gameboard';
 
 const theme = createTheme({
   palette: {
@@ -33,23 +34,18 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Box
-        height='100%'
-        width='100%'
-        position='absolute'
+
+      <Container
+        maxWidth='md'
         sx={{
-          backgroundImage: 'radial-gradient(circle at top, #1F3756, #141639);',
+          display: 'flex',
+          flexDirection: 'column',
+          height: '100%',
         }}
       >
-        <Container
-          maxWidth='md'
-          sx={{
-            height: '100%',
-          }}
-        >
-          <Header />
-        </Container>
-      </Box>
+        <Header />
+        <Gameboard />
+      </Container>
     </ThemeProvider>
   );
 }
