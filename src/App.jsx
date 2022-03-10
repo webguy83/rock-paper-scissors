@@ -1,8 +1,8 @@
 // @ts-nocheck
 import './App.css';
-import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import Container from '@mui/material/Container';
 import Header from 'components/Header';
 import Gameboard from 'components/Gameboard';
@@ -30,6 +30,25 @@ const theme = createTheme({
   },
 });
 
+const rulesBtnStyles = {
+  position: 'absolute',
+  bottom: 30,
+  right: 30,
+};
+
+const RulesButton = styled(Button)({
+  color: 'white',
+  borderColor: 'white',
+  paddingLeft: 35,
+  paddingRight: 35,
+  fontSize: 18,
+  letterSpacing: 2,
+  '&:hover': {
+    borderColor: 'white',
+    backgroundColor: 'transparent',
+  },
+});
+
 function App() {
   return (
     <ThemeProvider theme={theme}>
@@ -40,11 +59,14 @@ function App() {
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          height: '100%',
+          minHeight: '100vh',
         }}
       >
         <Header />
         <Gameboard />
+        <RulesButton variant='outlined' disableRipple sx={rulesBtnStyles}>
+          Rules
+        </RulesButton>
       </Container>
     </ThemeProvider>
   );

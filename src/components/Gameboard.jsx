@@ -1,5 +1,6 @@
 import Box from '@mui/material/Box';
 import pentagon from '../images/bg-pentagon.svg';
+import Piece from './Piece';
 
 export default function Gameboard() {
   const gameboardStyles = {
@@ -59,7 +60,7 @@ export default function Gameboard() {
             borderRadius: '50%',
             backgroundColor: 'orange',
             position: 'absolute',
-            bottom: 50,
+            top: 240,
             left: 0,
           }}
         ></Box>
@@ -70,7 +71,7 @@ export default function Gameboard() {
             borderRadius: '50%',
             backgroundColor: 'pink',
             position: 'absolute',
-            bottom: 50,
+            top: 240,
             right: 0,
           }}
         ></Box>
