@@ -31,22 +31,22 @@ export default function Gameboard() {
           icon={scissorsIcon}
         />
         <Piece
-          coords={{ top: 60, right: -50 }}
+          coords={{ top: 65, right: -50 }}
           colours={{ darker: 'hsl(230, 89%, 62%)', lighter: 'hsl(230, 89%, 65%)' }}
           icon={paperIcon}
         />
         <Piece
-          coords={{ top: 240, right: 0 }}
+          coords={{ top: 240, right: 17 }}
           colours={{ darker: 'hsl(349, 71%, 52%)', lighter: 'hsl(349, 70%, 56%)' }}
           icon={rockIcon}
         />
         <Piece
-          coords={{ top: 240, left: 0 }}
+          coords={{ top: 240, left: 17 }}
           colours={{ darker: 'hsl(261, 73%, 60%)', lighter: 'hsl(261, 72%, 63%)' }}
           icon={lizardIcon}
         />
         <Piece
-          coords={{ top: 60, left: -50 }}
+          coords={{ top: 65, left: -50 }}
           colours={{ darker: 'hsl(189, 59%, 53%)', lighter: 'hsl(189, 58%, 57%)' }}
           icon={spockIcon}
         />

@@ -1,8 +1,8 @@
 import Box from '@mui/material/Box';
 
 const mainStyle = {
-  width: 130,
-  height: 130,
+  width: 125,
+  height: 125,
   borderRadius: '50%',
 };
 
@@ -15,32 +15,21 @@ export default function Piece({ coords, colours, icon }) {
       <Box position='relative'>
         <Box
           sx={{
-            position: 'absolute',
-            zIndex: 2,
-            backgroundColor: '#d3d3d3',
-            width: 90,
-            height: 90,
-            borderRadius: '50%',
-            top: '15%',
-            left: '15%',
-          }}
-        />
-        <Box
-          sx={{
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
             position: 'absolute',
             zIndex: 3,
             backgroundColor: 'white',
-            width: 90,
-            height: 90,
+            width: '78%',
+            height: '78%',
             borderRadius: '50%',
-            top: '19%',
-            left: '15%',
+            top: '12%',
+            left: '11%',
+            boxShadow: '0px 5px 0px 0px #dbdbdb inset',
           }}
         >
-          <img style={{ width: '50%' }} src={icon} alt='icon' />
+          <img style={{ width: '40%' }} src={icon} alt='icon' />
         </Box>
         <Box
           sx={{
@@ -48,15 +37,7 @@ export default function Piece({ coords, colours, icon }) {
             position: 'relative',
             zIndex: 1,
             background: `linear-gradient(${colours.lighter}, ${colours.darker});`,
-          }}
-        />
-        <Box
-          sx={{
-            ...mainStyle,
-            backgroundColor: darkestColour,
-            position: 'absolute',
-            top: 7,
-            zIndex: 0,
+            boxShadow: `0px 5px 0px 0px ${darkestColour}`,
           }}
         />
       </Box>
