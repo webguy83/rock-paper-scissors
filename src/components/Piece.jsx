@@ -20,7 +20,7 @@ export default function Piece({ coords, colours, icon }) {
             alignItems: 'center',
             position: 'absolute',
             zIndex: 3,
-            backgroundColor: 'white',
+            backgroundColor: 'background.paper',
             width: '78%',
             height: '78%',
             borderRadius: '50%',

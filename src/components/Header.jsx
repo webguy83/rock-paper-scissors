@@ -1,7 +1,6 @@
 import { useTheme } from '@emotion/react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-
 import logo from '../images/logo-bonus.svg';
 
 const containerStyles = {
@@ -21,7 +20,7 @@ const scoreBoxStyles = {
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
-  bgcolor: 'white',
+  bgcolor: 'background.paper',
   pl: 5,
   pr: 5,
   borderRadius: 1.5,
