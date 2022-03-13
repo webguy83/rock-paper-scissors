@@ -27,6 +27,7 @@ const style = {
   bgcolor: 'background.paper',
   p: 4,
   borderRadius: 2.5,
+  outline: 'none',
 };
 
 function App() {
