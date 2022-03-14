@@ -1,6 +1,6 @@
 // @ts-nocheck
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 import Container from '@mui/material/Container';
@@ -32,8 +32,18 @@ const style = {
 
 function App() {
   const [open, setOpen] = useState(true);
+  const [score, setScore] = useState(0);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  useEffect(() => {
+    const storage = localStorage.getItem('gameScore');
+
+    if (storage) {
+      setScore(parseInt(storage));
+    }
+  }, []);
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -77,9 +87,14 @@ function App() {
           minHeight: '100vh',
         }}
       >
-        <Header />
-        <Gameboard />
-        <RulesButton variant='outlined' disableRipple onClick={handleOpen}>
+        <Header score={score} />
+        <Gameboard setScore={setScore} />
+        <RulesButton
+          sx={{ position: 'absolute', bottom: 30, right: 30 }}
+          variant='outlined'
+          disableRipple
+          onClick={handleOpen}
+        >
           Rules
         </RulesButton>
       </Container>

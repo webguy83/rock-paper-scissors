@@ -4,10 +4,12 @@ import Piece from './Piece';
 import { pieces } from '../utils';
 import Fade from '@mui/material/Fade';
 import { forwardRef, useState } from 'react';
+import PlayAgainButton from './PlayAgainButton';
 
 const headerStyling = {
   textTransform: 'uppercase',
   color: 'background.paper',
+  fontWeight: 700,
 };
 
 const pickedStyles = {
@@ -17,18 +19,39 @@ const pickedStyles = {
   marginRight: 4,
 };
 
-function checkResult(selectedPiece, housePiece, items) {
-  if (selectedPiece === housePiece) {
-    return 'tie';
-  }
-  if (items[selectedPiece].defeats.includes(housePiece)) {
-    return 'win';
-  }
-  return 'lose';
-}
-
-export default function Results({ selectedPiece, housePiece }) {
+export default function Results({
+  setSelectedPiece,
+  setSelectedHousePiece,
+  selectedPiece,
+  housePiece,
+  setScore,
+}) {
   const [result, setResult] = useState(null);
+
+  function checkResult(selectedPiece, housePiece, items) {
+    if (selectedPiece === housePiece) {
+      return 'tie';
+    }
+    if (items[selectedPiece].defeats.includes(housePiece)) {
+      setScore((prevScore) => {
+        const score = prevScore + 1;
+        localStorage.setItem('gameScore', score);
+        return score;
+      });
+      return 'win';
+    }
+    setScore((prevScore) => {
+      let score = prevScore;
+      if (score > 0) {
+        score--;
+      } else {
+        score = 0;
+      }
+      localStorage.setItem('gameScore', score);
+      return score;
+    });
+    return 'lose';
+  }
 
   const WrapperPiece = forwardRef((props, ref) => {
     return (
@@ -39,7 +62,7 @@ export default function Results({ selectedPiece, housePiece }) {
   });
 
   return (
-    <Box display='flex'>
+    <Box display='flex' height='max-content'>
       <Box sx={pickedStyles}>
         <Typography
           textAlign='center'
@@ -53,7 +76,30 @@ export default function Results({ selectedPiece, housePiece }) {
         </Typography>
         <Piece size={{ width: 220, height: 220 }} info={pieces[selectedPiece]} />
       </Box>
-      {result && <Box>{result}</Box>}
+      {result && (
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+          }}
+        >
+          <Typography letterSpacing={2} variant='h3' component='p' sx={headerStyling}>
+            You {result}!
+          </Typography>
+          <PlayAgainButton
+            onClick={() => {
+              setSelectedPiece(null);
+              setSelectedHousePiece(null);
+            }}
+            sx={{ mt: 2 }}
+            variant='contained'
+            disableRipple
+          >
+            Play Again
+          </PlayAgainButton>
+        </Box>
+      )}
 
       <Box sx={pickedStyles}>
         <Typography
@@ -70,9 +116,12 @@ export default function Results({ selectedPiece, housePiece }) {
           <Box position='absolute' zIndex={1}>
             <Fade
               in={true}
-              timeout={{ enter: 3000 }}
+              timeout={{ enter: 1500 }}
               addEndListener={(node) => {
                 node.addEventListener('transitionend', () => {
+                  setResult(checkResult(selectedPiece, housePiece, pieces));
+                });
+                node.addEventListener('transitioncancel', () => {
                   setResult(checkResult(selectedPiece, housePiece, pieces));
                 });
               }}

@@ -4,7 +4,7 @@ import PlayingArea from './PlayingArea';
 import Results from './Results';
 import { pieces } from '../utils';
 
-export default function Gameboard() {
+export default function Gameboard({ setScore }) {
   const [selectedPiece, setSelectedPiece] = useState(null);
   const [selectedHousePiece, setSelectedHousePiece] = useState(null);
 
@@ -14,7 +14,7 @@ export default function Gameboard() {
       return items[Math.floor(Math.random() * items.length)];
     };
     setSelectedHousePiece(getHousePiece(piecesKeys));
-  }, []);
+  }, [selectedHousePiece]);
 
   const gameboardStyles = {
     display: 'flex',
@@ -26,7 +26,15 @@ export default function Gameboard() {
   return (
     <Box sx={gameboardStyles}>
       {!selectedPiece && <PlayingArea setSelectedPiece={setSelectedPiece} />}
-      {selectedPiece && <Results selectedPiece={selectedPiece} housePiece={selectedHousePiece} />}
+      {selectedPiece && (
+        <Results
+          setScore={setScore}
+          selectedPiece={selectedPiece}
+          setSelectedPiece={setSelectedPiece}
+          setSelectedHousePiece={setSelectedHousePiece}
+          housePiece={selectedHousePiece}
+        />
+      )}
     </Box>
   );
 }

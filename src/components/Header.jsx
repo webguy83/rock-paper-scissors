@@ -27,7 +27,7 @@ const scoreBoxStyles = {
   textTransform: 'uppercase',
 };
 
-export default function Header() {
+export default function Header({ score }) {
   const theme = useTheme();
   return (
     <Box sx={containerStyles} borderColor={theme.palette.neutral.headerOutline}>
@@ -43,7 +43,7 @@ export default function Header() {
           lineHeight={1}
           color={theme.palette.neutral.darkText}
         >
-          69
+          {score}
         </Typography>
       </Box>
     </Box>
