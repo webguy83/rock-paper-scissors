@@ -1,46 +1,51 @@
 import Box from '@mui/material/Box';
+import Ripple from './Ripple';
 
-const mainStyle = {
-  borderRadius: '50%',
-  position: 'relative',
-  zIndex: 1,
-};
-
-export default function Piece({ customCSS, info, size, onClick }) {
+export default function Piece({ customCSS, info, size, onClick, winner }) {
   const HSLvals = info.colours.darker.replace(/(hsl\(|\s|%|\))/g, '').split(',');
   const darkL = parseInt(HSLvals[2]) - 10;
   const darkestColour = `hsl(${HSLvals[0]}, ${HSLvals[1]}%, ${darkL}%)`;
   return (
-    <Box sx={customCSS} onClick={onClick}>
-      <Box position='relative' sx={{ ...size }}>
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
+    <Box
+      sx={{
+        position: 'relative',
+        zIndex: 4,
+        ...size,
+        ...customCSS,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: '50%',
+        background: `linear-gradient(${info.colours.lighter}, ${info.colours.darker});`,
+        boxShadow: `0px 5px 0px 0px ${darkestColour}`,
+      }}
+      onClick={onClick}
+    >
+      <Box
+        sx={{
+          display: 'flex',
+          position: 'absolute',
+          zIndex: 5,
+          justifyContent: 'center',
+          alignItems: 'center',
+          backgroundColor: 'background.paper',
+          width: '75%',
+          height: '75%',
+          borderRadius: '50%',
+          boxShadow: '0px 5px 0px 0px #dbdbdb inset',
+        }}
+      >
+        <img style={{ width: '40%' }} src={info.icon} alt='icon' />
+      </Box>
+      {winner && (
+        <Ripple
+          size={size}
+          style={{
             position: 'absolute',
-            zIndex: 3,
-            backgroundColor: 'background.paper',
-            width: '78%',
-            height: '78%',
-            borderRadius: '50%',
-            top: '12%',
-            left: '11%',
-            boxShadow: '0px 5px 0px 0px #dbdbdb inset',
-          }}
-        >
-          <img style={{ width: '40%' }} src={info.icon} alt='icon' />
-        </Box>
-        <Box
-          sx={{
-            ...mainStyle,
-            ...size,
-
-            background: `linear-gradient(${info.colours.lighter}, ${info.colours.darker});`,
-            boxShadow: `0px 5px 0px 0px ${darkestColour}`,
+            zIndex: 0,
           }}
         />
-      </Box>
+      )}
     </Box>
   );
 }

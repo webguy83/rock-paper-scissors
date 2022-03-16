@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 
 const mainPieceCSSstyles = {
   position: 'absolute',
+  transform: 'translate(-50%,-50%)',
   '&:hover': {
     cursor: 'pointer',
     opacity: 0.9,
@@ -20,8 +21,6 @@ export default function PlayingArea({ setSelectedPiece }) {
   return (
     <Box
       sx={{
-        display: 'flex',
-        flexDirection: 'column',
         position: 'relative',
         mt: 10,
       }}
@@ -29,31 +28,31 @@ export default function PlayingArea({ setSelectedPiece }) {
     >
       <Piece
         info={scissors}
-        customCSS={{ top: -40, left: 100, ...mainPieceCSSstyles }}
+        customCSS={{ ...mainPieceCSSstyles, top: 10, left: 160 }}
         size={{ width: 125, height: 125 }}
         onClick={() => onPieceClick('scissors')}
       />
       <Piece
         info={paper}
-        customCSS={{ top: 65, right: -50, ...mainPieceCSSstyles }}
+        customCSS={{ ...mainPieceCSSstyles, top: 120, left: 310 }}
         size={{ width: 125, height: 125 }}
         onClick={() => onPieceClick('paper')}
       />
       <Piece
         info={rock}
-        customCSS={{ top: 240, right: 17, ...mainPieceCSSstyles }}
+        customCSS={{ ...mainPieceCSSstyles, top: 300, left: 260 }}
         size={{ width: 125, height: 125 }}
         onClick={() => onPieceClick('rock')}
       />
       <Piece
         info={lizard}
-        customCSS={{ top: 240, left: 17, ...mainPieceCSSstyles }}
+        customCSS={{ ...mainPieceCSSstyles, top: 300, left: 70 }}
         size={{ width: 125, height: 125 }}
         onClick={() => onPieceClick('lizard')}
       />
       <Piece
         info={spock}
-        customCSS={{ top: 65, left: -50, ...mainPieceCSSstyles }}
+        customCSS={{ ...mainPieceCSSstyles, top: 120, left: 10 }}
         size={{ width: 125, height: 125 }}
         onClick={() => onPieceClick('spock')}
       />

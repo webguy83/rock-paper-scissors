@@ -56,7 +56,7 @@ export default function Results({
   const WrapperPiece = forwardRef((props, ref) => {
     return (
       <div ref={ref} {...props}>
-        <Piece size={{ width: 220, height: 220 }} info={pieces[housePiece]} />
+        <Piece {...props} size={{ width: 220, height: 220 }} info={pieces[housePiece]} />
       </div>
     );
   });
@@ -74,7 +74,11 @@ export default function Results({
         >
           You Picked
         </Typography>
-        <Piece size={{ width: 220, height: 220 }} info={pieces[selectedPiece]} />
+        <Piece
+          winner={result === 'win'}
+          size={{ width: 220, height: 220 }}
+          info={pieces[selectedPiece]}
+        />
       </Box>
       {result && (
         <Box
@@ -126,7 +130,7 @@ export default function Results({
                 });
               }}
             >
-              <WrapperPiece />
+              <WrapperPiece winner={result === 'lose'} />
             </Fade>
           </Box>
           <Box
