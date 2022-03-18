@@ -23,7 +23,6 @@ const style = {
   left: '50%',
   textTransform: 'uppercase',
   transform: 'translate(-50%, -50%)',
-  width: 400,
   bgcolor: 'background.paper',
   p: 4,
   borderRadius: 2.5,
@@ -90,7 +89,11 @@ function App() {
         <Header score={score} />
         <Gameboard setScore={setScore} />
         <RulesButton
-          sx={{ position: 'absolute', bottom: 30, right: 30 }}
+          sx={{
+            position: 'absolute',
+            bottom: (theme) => theme.spacing(3.75),
+            right: (theme) => theme.spacing(3.75),
+          }}
           variant='outlined'
           disableRipple
           onClick={handleOpen}

@@ -20,7 +20,7 @@ export default function Gameboard({ setScore }) {
     display: 'flex',
     justifyContent: 'center',
     margin: 'auto',
-    height: 500,
+    height: '31.25rem',
   };
 
   return (

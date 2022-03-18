@@ -15,8 +15,7 @@ const headerStyling = {
 const pickedStyles = {
   display: 'flex',
   flexDirection: 'column',
-  marginLeft: 4,
-  marginRight: 4,
+  margin: (theme) => theme.spacing(0, 4),
 };
 
 export default function Results({
@@ -27,6 +26,7 @@ export default function Results({
   setScore,
 }) {
   const [result, setResult] = useState(null);
+  const mainSize = 220;
 
   function checkResult(selectedPiece, housePiece, items) {
     if (selectedPiece === housePiece) {
@@ -56,7 +56,7 @@ export default function Results({
   const WrapperPiece = forwardRef((props, ref) => {
     return (
       <div ref={ref} {...props}>
-        <Piece {...props} size={{ width: 220, height: 220 }} info={pieces[housePiece]} />
+        <Piece {...props} size={{ width: mainSize, height: mainSize }} info={pieces[housePiece]} />
       </div>
     );
   });
@@ -67,7 +67,7 @@ export default function Results({
         <Typography
           textAlign='center'
           marginBottom={6}
-          letterSpacing={2}
+          letterSpacing='0.125rem'
           variant='h6'
           component='h2'
           sx={headerStyling}
@@ -76,19 +76,21 @@ export default function Results({
         </Typography>
         <Piece
           winner={result === 'win'}
-          size={{ width: 220, height: 220 }}
+          size={{ width: mainSize, height: mainSize }}
           info={pieces[selectedPiece]}
         />
       </Box>
       {result && (
         <Box
           sx={{
+            position: 'relative',
+            zIndex: 4,
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
           }}
         >
-          <Typography letterSpacing={2} variant='h3' component='p' sx={headerStyling}>
+          <Typography letterSpacing='0.125rem' variant='h3' component='p' sx={headerStyling}>
             You {result}!
           </Typography>
           <PlayAgainButton
@@ -108,7 +110,7 @@ export default function Results({
       <Box sx={pickedStyles}>
         <Typography
           textAlign='center'
-          letterSpacing={2}
+          letterSpacing='0.125rem'
           marginBottom={6}
           variant='h6'
           component='h2'
@@ -116,7 +118,7 @@ export default function Results({
         >
           The House Picked
         </Typography>
-        <Box position='relative' sx={{ width: 220, height: 220 }}>
+        <Box position='relative' sx={{ width: mainSize, height: mainSize }}>
           <Box position='absolute' zIndex={1}>
             <Fade
               in={true}
@@ -133,19 +135,6 @@ export default function Results({
               <WrapperPiece winner={result === 'lose'} />
             </Fade>
           </Box>
-          <Box
-            position='absolute'
-            sx={{
-              width: '78%',
-              height: '78%',
-              top: '12%',
-              left: '11%',
-              backgroundColor: 'black',
-              opacity: 0.2,
-              borderRadius: '50%',
-              zIndex: 0,
-            }}
-          ></Box>
         </Box>
       </Box>
     </Box>

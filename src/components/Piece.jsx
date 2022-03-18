@@ -10,14 +10,15 @@ export default function Piece({ customCSS, info, size, onClick, winner }) {
       sx={{
         position: 'relative',
         zIndex: 4,
-        ...size,
+        width: `${size.width / 16}rem`,
+        height: `${size.height / 16}rem`,
         ...customCSS,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: '50%',
         background: `linear-gradient(${info.colours.lighter}, ${info.colours.darker});`,
-        boxShadow: `0px 5px 0px 0px ${darkestColour}`,
+        boxShadow: `0px 0.3125rem 0px 0px ${darkestColour}`,
       }}
       onClick={onClick}
     >
@@ -32,7 +33,7 @@ export default function Piece({ customCSS, info, size, onClick, winner }) {
           width: '75%',
           height: '75%',
           borderRadius: '50%',
-          boxShadow: '0px 5px 0px 0px #dbdbdb inset',
+          boxShadow: '0px 0.3125rem 0px 0px #dbdbdb inset',
         }}
       >
         <img style={{ width: '40%' }} src={info.icon} alt='icon' />

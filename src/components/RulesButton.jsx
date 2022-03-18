@@ -4,10 +4,9 @@ import { styled } from '@mui/material/styles';
 export default styled(Button)(({ theme }) => ({
   color: theme.palette.background.paper,
   borderColor: theme.palette.background.paper,
-  paddingLeft: 35,
-  paddingRight: 35,
-  fontSize: 18,
-  letterSpacing: 2,
+  padding: theme.spacing(0.625, 4.375),
+  fontSize: '1.125rem',
+  letterSpacing: '0.125rem',
   '&:hover': {
     borderColor: theme.palette.background.paper,
     backgroundColor: 'transparent',

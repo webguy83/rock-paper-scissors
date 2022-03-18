@@ -1,4 +1,3 @@
-import { useTheme } from '@emotion/react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import logo from '../images/logo-bonus.svg';
@@ -7,12 +6,12 @@ const containerStyles = {
   display: 'flex',
   justifyContent: 'space-between',
   mt: 3,
-  borderWidth: 2,
+  borderWidth: '0.125rem',
   borderStyle: 'solid',
   borderRadius: 5,
-  p: 3,
-  pt: 2,
-  pb: 2,
+  p: (theme) => {
+    return theme.spacing(3, 2, 3);
+  },
 };
 
 const scoreBoxStyles = {
@@ -21,19 +20,19 @@ const scoreBoxStyles = {
   justifyContent: 'center',
   alignItems: 'center',
   bgcolor: 'background.paper',
-  pl: 5,
-  pr: 5,
+  p: (theme) => {
+    return theme.spacing(0, 5);
+  },
   borderRadius: 1.5,
   textTransform: 'uppercase',
 };
 
 export default function Header({ score }) {
-  const theme = useTheme();
   return (
-    <Box sx={containerStyles} borderColor={theme.palette.neutral.headerOutline}>
-      <img src={logo} alt='logo' />
+    <Box sx={containerStyles} borderColor='neutral.headerOutline'>
+      <img src={logo} alt='logo' style={{ width: '6rem' }} />
       <Box sx={scoreBoxStyles}>
-        <Typography letterSpacing={2} color={theme.palette.neutral.scoreText}>
+        <Typography letterSpacing='0.125rem' color='neutral.scoreText'>
           Score
         </Typography>
         <Typography
@@ -41,7 +40,7 @@ export default function Header({ score }) {
           component='p'
           fontWeight={700}
           lineHeight={1}
-          color={theme.palette.neutral.darkText}
+          color='neutral.darkText'
         >
           {score}
         </Typography>
