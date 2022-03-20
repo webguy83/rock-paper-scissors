@@ -4,6 +4,7 @@ import { styled } from '@mui/material/styles';
 export default styled(Button)(({ theme }) => ({
   color: theme.palette.background.paper,
   borderColor: theme.palette.background.paper,
+  borderRadius: '.5rem',
   padding: theme.spacing(0.625, 4.375),
   fontSize: '1.125rem',
   letterSpacing: '0.125rem',

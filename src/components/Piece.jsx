@@ -18,7 +18,7 @@ export default function Piece({ customCSS, info, size, onClick, winner }) {
         alignItems: 'center',
         borderRadius: '50%',
         background: `linear-gradient(${info.colours.lighter}, ${info.colours.darker});`,
-        boxShadow: `0px 0.3125rem 0px 0px ${darkestColour}`,
+        boxShadow: `0px 7px 0px 0px ${darkestColour}`,
       }}
       onClick={onClick}
     >
@@ -33,7 +33,7 @@ export default function Piece({ customCSS, info, size, onClick, winner }) {
           width: '75%',
           height: '75%',
           borderRadius: '50%',
-          boxShadow: '0px 0.3125rem 0px 0px #dbdbdb inset',
+          boxShadow: '0px 7px 0px 0px #dbdbdb inset',
         }}
       >
         <img style={{ width: '40%' }} src={info.icon} alt='icon' />

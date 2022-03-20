@@ -18,8 +18,8 @@ export default function Gameboard({ setScore }) {
 
   const gameboardStyles = {
     display: 'flex',
-    justifyContent: 'center',
-    margin: 'auto',
+    flexDirection: 'column',
+    m: 'auto',
     height: '31.25rem',
   };
 

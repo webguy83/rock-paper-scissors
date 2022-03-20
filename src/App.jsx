@@ -88,19 +88,24 @@ function App() {
       >
         <Header score={score} />
         <Gameboard setScore={setScore} />
-        <RulesButton
-          sx={{
-            position: 'absolute',
-            bottom: (theme) => theme.spacing(3.75),
-            right: (theme) => theme.spacing(3.75),
-          }}
-          variant='outlined'
-          disableRipple
-          onClick={handleOpen}
-        >
+      </Container>
+      <Box
+        sx={{
+          position: 'fixed',
+          display: 'flex',
+          justifyContent: 'right',
+          [theme.breakpoints.down('sm')]: {
+            justifyContent: 'center',
+          },
+          bottom: 0,
+          width: '100%',
+          p: 4,
+        }}
+      >
+        <RulesButton variant='outlined' disableRipple onClick={handleOpen}>
           Rules
         </RulesButton>
-      </Container>
+      </Box>
     </ThemeProvider>
   );
 }

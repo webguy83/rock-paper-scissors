@@ -70,3 +70,36 @@ export const pieces = {
     defeats: ['scissors', 'rock'],
   },
 };
+
+{
+  /* <Piece
+        info={scissors}
+        customCSS={{ ...mainPieceCSSstyles, top: 10, left: 160 }}
+        size={{ width: pieceSize, height: pieceSize }}
+        onClick={() => onPieceClick('scissors')}
+      />
+      <Piece
+        info={paper}
+        customCSS={{ ...mainPieceCSSstyles, top: 120, left: 310 }}
+        size={{ width: pieceSize, height: pieceSize }}
+        onClick={() => onPieceClick('paper')}
+      />
+      <Piece
+        info={rock}
+        customCSS={{ ...mainPieceCSSstyles, top: 300, left: 260 }}
+        size={{ width: pieceSize, height: pieceSize }}
+        onClick={() => onPieceClick('rock')}
+      />
+      <Piece
+        info={lizard}
+        customCSS={{ ...mainPieceCSSstyles, top: 300, left: 70 }}
+        size={{ width: pieceSize, height: pieceSize }}
+        onClick={() => onPieceClick('lizard')}
+      />
+      <Piece
+        info={spock}
+        customCSS={{ ...mainPieceCSSstyles, top: 120, left: 10 }}
+        size={{ width: pieceSize, height: pieceSize }}
+        onClick={() => onPieceClick('spock')}
+      /> */
+}

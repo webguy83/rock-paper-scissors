@@ -4,4 +4,5 @@ html {
 
 body {
   background-image: radial-gradient(circle at top, #1f3756, #141639);
+  background-attachment: fixed;
 }

@@ -14,50 +14,45 @@ const mainPieceCSSstyles = {
 
 export default function PlayingArea({ setSelectedPiece }) {
   const { scissors, paper, rock, lizard, spock } = pieces;
+  const pieceSize = 175;
 
   const onPieceClick = function (piece) {
     setSelectedPiece(piece);
   };
   return (
-    <Box
-      sx={{
-        position: 'relative',
-        mt: 10,
-      }}
-      position='relative'
-    >
+    <Box position='relative'>
       <Piece
         info={scissors}
-        customCSS={{ ...mainPieceCSSstyles, top: 10, left: 160 }}
-        size={{ width: 125, height: 125 }}
+        customCSS={{ ...mainPieceCSSstyles, top: 10, left: 230 }}
+        size={{ width: pieceSize, height: pieceSize }}
         onClick={() => onPieceClick('scissors')}
       />
       <Piece
         info={paper}
-        customCSS={{ ...mainPieceCSSstyles, top: 120, left: 310 }}
-        size={{ width: 125, height: 125 }}
+        customCSS={{ ...mainPieceCSSstyles, top: 180, left: 430 }}
+        size={{ width: pieceSize, height: pieceSize }}
         onClick={() => onPieceClick('paper')}
       />
       <Piece
         info={rock}
-        customCSS={{ ...mainPieceCSSstyles, top: 300, left: 260 }}
-        size={{ width: 125, height: 125 }}
+        customCSS={{ ...mainPieceCSSstyles, top: 415, left: 360 }}
+        size={{ width: pieceSize, height: pieceSize }}
         onClick={() => onPieceClick('rock')}
       />
       <Piece
         info={lizard}
-        customCSS={{ ...mainPieceCSSstyles, top: 300, left: 70 }}
-        size={{ width: 125, height: 125 }}
+        customCSS={{ ...mainPieceCSSstyles, top: 415, left: 90 }}
+        size={{ width: pieceSize, height: pieceSize }}
         onClick={() => onPieceClick('lizard')}
       />
       <Piece
         info={spock}
-        customCSS={{ ...mainPieceCSSstyles, top: 120, left: 10 }}
-        size={{ width: 125, height: 125 }}
+        customCSS={{ ...mainPieceCSSstyles, top: 180, left: 20 }}
+        size={{ width: pieceSize, height: pieceSize }}
         onClick={() => onPieceClick('spock')}
       />
 
-      <img src={pentagon} alt='pentagon background' />
+      <img src={pentagon} style={{ width: '28.125rem' }} alt='pentagon background' />
     </Box>
   );
 }

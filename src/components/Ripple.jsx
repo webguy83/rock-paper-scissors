@@ -8,7 +8,7 @@ export default function Ripple({ size }) {
       sx={{
         width: '100%',
         height: '100%',
-        transform: 'translate(6.875rem, 6.875rem)',
+        transform: 'translate(140px, 140px)',
       }}
     >
       <Box
