@@ -1,22 +1,22 @@
 import Box from '@mui/material/Box';
 
 export default function Ripple({ size }) {
-  const halfWidth = size.width / 16 / 2;
-  const halfHeight = size.height / 16 / 2;
+  function getRippleSize(rippleSize, multiplier = 1) {
+    return {
+      xs: rippleSize.xs + (rippleSize.xs / 2) * multiplier,
+      sm: rippleSize.sm + (rippleSize.sm / 2) * multiplier,
+      md: rippleSize.md + (rippleSize.md / 2) * multiplier,
+    };
+  }
+
   return (
-    <Box
-      sx={{
-        width: '100%',
-        height: '100%',
-        transform: 'translate(140px, 140px)',
-      }}
-    >
+    <div>
       <Box
         sx={{
           position: 'absolute',
           zIndex: 2,
-          width: `${size.width / 16 + halfWidth}rem`,
-          height: `${size.height / 16 + halfHeight}rem`,
+          width: getRippleSize(size),
+          height: getRippleSize(size),
           transform: 'translate(-50%,-50%)',
           borderRadius: '50%',
           backgroundColor: 'rgba(255,255,255,.05)',
@@ -26,8 +26,8 @@ export default function Ripple({ size }) {
         sx={{
           position: 'absolute',
           zIndex: 1,
-          width: `${size.width / 16 + halfWidth * 2}rem`,
-          height: `${size.height / 16 + halfHeight * 2}rem`,
+          width: getRippleSize(size, 2),
+          height: getRippleSize(size, 2),
           transform: 'translate(-50%,-50%)',
           borderRadius: '50%',
           backgroundColor: 'rgba(255,255,255,.03)',
@@ -37,13 +37,13 @@ export default function Ripple({ size }) {
         sx={{
           position: 'absolute',
           zIndex: 0,
-          width: `${size.width / 16 + halfWidth * 3}rem`,
-          height: `${size.height / 16 + halfHeight * 3}rem`,
+          width: getRippleSize(size, 3),
+          height: getRippleSize(size, 3),
           transform: 'translate(-50%,-50%)',
           borderRadius: '50%',
           backgroundColor: 'rgba(255,255,255,.01)',
         }}
       ></Box>
-    </Box>
+    </div>
   );
 }

@@ -10,8 +10,12 @@ export default function Piece({ customCSS, info, size, onClick, winner }) {
       sx={{
         position: 'relative',
         zIndex: 4,
-        width: `${size.width / 16}rem`,
-        height: `${size.height / 16}rem`,
+        width: {
+          ...size,
+        },
+        height: {
+          ...size,
+        },
         ...customCSS,
         display: 'flex',
         justifyContent: 'center',

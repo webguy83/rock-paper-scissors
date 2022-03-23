@@ -14,7 +14,9 @@ const mainPieceCSSstyles = {
 
 export default function PlayingArea({ setSelectedPiece }) {
   const { scissors, paper, rock, lizard, spock } = pieces;
-  const pieceSize = 175;
+  const pieceSize = {
+    xs: 175,
+  };
 
   const onPieceClick = function (piece) {
     setSelectedPiece(piece);
@@ -24,31 +26,31 @@ export default function PlayingArea({ setSelectedPiece }) {
       <Piece
         info={scissors}
         customCSS={{ ...mainPieceCSSstyles, top: 10, left: 230 }}
-        size={{ width: pieceSize, height: pieceSize }}
+        size={pieceSize}
         onClick={() => onPieceClick('scissors')}
       />
       <Piece
         info={paper}
         customCSS={{ ...mainPieceCSSstyles, top: 180, left: 430 }}
-        size={{ width: pieceSize, height: pieceSize }}
+        size={pieceSize}
         onClick={() => onPieceClick('paper')}
       />
       <Piece
         info={rock}
         customCSS={{ ...mainPieceCSSstyles, top: 415, left: 360 }}
-        size={{ width: pieceSize, height: pieceSize }}
+        size={pieceSize}
         onClick={() => onPieceClick('rock')}
       />
       <Piece
         info={lizard}
         customCSS={{ ...mainPieceCSSstyles, top: 415, left: 90 }}
-        size={{ width: pieceSize, height: pieceSize }}
+        size={pieceSize}
         onClick={() => onPieceClick('lizard')}
       />
       <Piece
         info={spock}
         customCSS={{ ...mainPieceCSSstyles, top: 180, left: 20 }}
-        size={{ width: pieceSize, height: pieceSize }}
+        size={pieceSize}
         onClick={() => onPieceClick('spock')}
       />
 

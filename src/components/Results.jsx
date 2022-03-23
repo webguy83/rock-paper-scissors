@@ -9,6 +9,7 @@ import PlayAgainButton from './PlayAgainButton';
 const headerStyling = {
   textTransform: 'uppercase',
   color: 'background.paper',
+  whiteSpace: 'nowrap',
   fontWeight: 700,
 };
 
@@ -28,8 +29,11 @@ export default function Results({
   const [result, setResult] = useState('');
   const [playerWinner, setPlayerWinner] = useState(false);
   const [houseWinner, setHouseWinner] = useState(false);
-
-  const mainSize = 280;
+  const breakpoints = {
+    xs: 120,
+    sm: 180,
+    md: 280,
+  };
 
   function checkResult(selectedPiece, housePiece, items) {
     if (selectedPiece === housePiece) {
@@ -63,12 +67,7 @@ export default function Results({
   const WrapperPiece = forwardRef((props, ref) => {
     return (
       <div ref={ref} {...props}>
-        <Piece
-          {...props}
-          winner={houseWinner}
-          size={{ width: mainSize, height: mainSize }}
-          info={pieces[housePiece]}
-        />
+        <Piece {...props} winner={houseWinner} size={breakpoints} info={pieces[housePiece]} />
       </div>
     );
   });
@@ -87,11 +86,7 @@ export default function Results({
           >
             You Picked
           </Typography>
-          <Piece
-            winner={playerWinner}
-            size={{ width: mainSize, height: mainSize }}
-            info={pieces[selectedPiece]}
-          />
+          <Piece winner={playerWinner} size={breakpoints} info={pieces[selectedPiece]} />
         </Box>
         {result && (
           <Box
@@ -142,7 +137,7 @@ export default function Results({
           >
             The House Picked
           </Typography>
-          <Box position='relative' sx={{ width: mainSize, height: mainSize }}>
+          <Box position='relative'>
             <Box position='absolute' zIndex={1}>
               <Fade
                 in={true}
@@ -156,6 +151,7 @@ export default function Results({
                   });
                 }}
               >
+                {/* <Box sx={{ width: mainSize, height: mainSize, bgcolor: 'red' }}></Box> */}
                 <WrapperPiece />
               </Fade>
             </Box>
