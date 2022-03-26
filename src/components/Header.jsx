@@ -21,6 +21,9 @@ const scoreBoxStyles = {
   alignItems: 'center',
   bgcolor: 'background.paper',
   p: (theme) => {
+    if (theme.breakpoints.up('xs')) {
+      return theme.spacing(0, 4);
+    }
     return theme.spacing(0, 5);
   },
   borderRadius: 1.5,
@@ -30,13 +33,34 @@ const scoreBoxStyles = {
 export default function Header({ score }) {
   return (
     <Box sx={containerStyles} borderColor='neutral.headerOutline'>
-      <img src={logo} alt='logo' style={{ width: '6rem' }} />
+      <Box
+        sx={{
+          width: {
+            xs: '5rem',
+            sm: '7rem',
+          },
+        }}
+      >
+        <img
+          src={logo}
+          alt='logo'
+          style={{
+            width: '100%',
+          }}
+        />
+      </Box>
+
       <Box sx={scoreBoxStyles}>
         <Typography letterSpacing='0.125rem' color='neutral.scoreText'>
           Score
         </Typography>
         <Typography
-          variant='h2'
+          sx={{
+            fontSize: {
+              xs: '3rem',
+              sm: '3.75rem',
+            },
+          }}
           component='p'
           fontWeight={700}
           lineHeight={1}

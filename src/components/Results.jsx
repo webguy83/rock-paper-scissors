@@ -10,14 +10,27 @@ const headerStyling = {
   textTransform: 'uppercase',
   color: 'background.paper',
   whiteSpace: 'nowrap',
-  fontWeight: 700,
 };
 
-const pickedStyles = {
+const selectionStylingText = {
+  display: 'none',
+  fontSize: {
+    xs: '1rem',
+    sm: '1.3rem',
+  },
+};
+
+const pickedStyles = (theme) => ({
+  position: 'relative',
+  zIndex: 10,
   display: 'flex',
   flexDirection: 'column',
-  margin: (theme) => theme.spacing(0, 4),
-};
+  alignItems: 'center',
+  margin: theme.spacing(0, 2),
+  [theme.breakpoints.up('sm')]: {
+    margin: theme.spacing(0, 4),
+  },
+});
 
 export default function Results({
   setSelectedPiece,
@@ -72,6 +85,47 @@ export default function Results({
     );
   });
 
+  const getResultBlock = (displayOnBreakpoint) => {
+    return (
+      <Box
+        sx={(theme) => ({
+          display: displayOnBreakpoint ? 'none' : 'flex',
+          position: 'relative',
+          zIndex: 99,
+          mt: 6.25,
+          [theme.breakpoints.up('md')]: {
+            display: displayOnBreakpoint ? 'flex' : 'none',
+          },
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignSelf: 'center',
+          minWidth: 230,
+        })}
+      >
+        <Typography
+          letterSpacing='0.125rem'
+          variant='h3'
+          align='center'
+          component='p'
+          sx={headerStyling}
+        >
+          You {result}!
+        </Typography>
+        <PlayAgainButton
+          onClick={() => {
+            setSelectedPiece(null);
+            setSelectedHousePiece(null);
+          }}
+          sx={{ mt: 2 }}
+          variant='contained'
+          disableRipple
+        >
+          Play Again
+        </PlayAgainButton>
+      </Box>
+    );
+  };
+
   return (
     <>
       <Box display='flex' height='max-content'>
@@ -80,122 +134,79 @@ export default function Results({
             textAlign='center'
             marginBottom={6}
             letterSpacing='0.125rem'
-            variant='h6'
             component='h2'
-            sx={headerStyling}
+            sx={(theme) => ({
+              ...selectionStylingText,
+              ...headerStyling,
+              [theme.breakpoints.up('md')]: { display: 'block' },
+            })}
           >
             You Picked
           </Typography>
           <Piece winner={playerWinner} size={breakpoints} info={pieces[selectedPiece]} />
-        </Box>
-        {result && (
-          <Box
+          <Typography
+            textAlign='center'
+            marginTop={6}
+            letterSpacing='0.125rem'
+            component='h2'
             sx={(theme) => ({
-              position: 'relative',
-              zIndex: 4,
-              display: 'flex',
-              [theme.breakpoints.down('md')]: {
-                display: 'none',
-              },
-              flexDirection: 'column',
-              justifyContent: 'center',
-
-              minWidth: 230,
+              ...selectionStylingText,
+              ...headerStyling,
+              [theme.breakpoints.down('md')]: { display: 'block' },
             })}
           >
-            <Typography
-              letterSpacing='0.125rem'
-              variant='h3'
-              align='center'
-              component='p'
-              sx={headerStyling}
-            >
-              You {result}!
-            </Typography>
-            <PlayAgainButton
-              onClick={() => {
-                setSelectedPiece(null);
-                setSelectedHousePiece(null);
-              }}
-              sx={{ mt: 2 }}
-              variant='contained'
-              disableRipple
-            >
-              Play Again
-            </PlayAgainButton>
-          </Box>
-        )}
+            You Picked
+          </Typography>
+        </Box>
+        {result && getResultBlock(true)}
 
         <Box sx={pickedStyles}>
           <Typography
             letterSpacing='0.125rem'
             marginBottom={6}
-            variant='h6'
             component='h2'
             align='center'
-            sx={headerStyling}
+            sx={(theme) => ({
+              ...selectionStylingText,
+              ...headerStyling,
+              [theme.breakpoints.up('md')]: { display: 'block' },
+            })}
           >
             The House Picked
           </Typography>
-          <Box position='relative'>
-            <Box position='absolute' zIndex={1}>
-              <Fade
-                in={true}
-                timeout={{ enter: 1500 }}
-                addEndListener={(node) => {
-                  node.addEventListener('transitionend', () => {
-                    checkResult(selectedPiece, housePiece, pieces);
-                  });
-                  node.addEventListener('transitioncancel', () => {
-                    checkResult(selectedPiece, housePiece, pieces);
-                  });
-                }}
-              >
-                {/* <Box sx={{ width: mainSize, height: mainSize, bgcolor: 'red' }}></Box> */}
-                <WrapperPiece />
-              </Fade>
-            </Box>
+
+          <Box position='relative' zIndex={1}>
+            <Fade
+              in={true}
+              timeout={{ enter: 1500 }}
+              addEndListener={(node) => {
+                node.addEventListener('transitionend', () => {
+                  checkResult(selectedPiece, housePiece, pieces);
+                });
+                node.addEventListener('transitioncancel', () => {
+                  checkResult(selectedPiece, housePiece, pieces);
+                });
+              }}
+            >
+              <WrapperPiece />
+            </Fade>
           </Box>
-        </Box>
-      </Box>
-      {result && (
-        <Box
-          sx={(theme) => ({
-            display: 'none',
-            position: 'relative',
-            zIndex: 4,
-            mt: 6.25,
-            [theme.breakpoints.down('md')]: {
-              display: 'flex',
-            },
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignSelf: 'center',
-            minWidth: 230,
-          })}
-        >
           <Typography
             letterSpacing='0.125rem'
-            variant='h3'
+            marginTop={6}
+            component='h2'
             align='center'
-            component='p'
-            sx={headerStyling}
+            sx={(theme) => ({
+              ...selectionStylingText,
+              ...headerStyling,
+              [theme.breakpoints.down('md')]: { display: 'block' },
+            })}
           >
-            You {result}!
+            The House Picked
           </Typography>
-          <PlayAgainButton
-            onClick={() => {
-              setSelectedPiece(null);
-              setSelectedHousePiece(null);
-            }}
-            sx={{ mt: 2 }}
-            variant='contained'
-            disableRipple
-          >
-            Play Again
-          </PlayAgainButton>
         </Box>
-      )}
+      </Box>
+      {result && getResultBlock(false)}
     </>
   );
 }
