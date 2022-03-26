@@ -10,6 +10,7 @@ const headerStyling = {
   textTransform: 'uppercase',
   color: 'background.paper',
   whiteSpace: 'nowrap',
+  fontWeight: 700,
 };
 
 const selectionStylingText = {
@@ -178,7 +179,7 @@ export default function Results({
           <Box position='relative' zIndex={1}>
             <Fade
               in={true}
-              timeout={{ enter: 1500 }}
+              timeout={2000}
               addEndListener={(node) => {
                 node.addEventListener('transitionend', () => {
                   checkResult(selectedPiece, housePiece, pieces);
@@ -188,8 +189,19 @@ export default function Results({
                 });
               }}
             >
-              <WrapperPiece />
+              <WrapperPiece style={{ float: 'left' }} />
             </Fade>
+            <Box
+              position='absolute'
+              sx={{
+                width: '100%',
+                height: '100%',
+                backgroundColor: 'black',
+                opacity: 0.2,
+                borderRadius: '50%',
+                zIndex: 0,
+              }}
+            ></Box>
           </Box>
           <Typography
             letterSpacing='0.125rem'

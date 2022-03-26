@@ -17,7 +17,7 @@ import closeIcon from './images/icon-close.svg';
 import imageRules from './images/image-rules-bonus.svg';
 import IconButton from '@mui/material/IconButton';
 
-const style = {
+const modalMainStyle = (theme) => ({
   position: 'absolute',
   top: '50%',
   left: '50%',
@@ -27,7 +27,15 @@ const style = {
   p: 4,
   borderRadius: 2.5,
   outline: 'none',
-};
+  [theme.breakpoints.down('sm')]: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    width: '100vw',
+    height: '100vh',
+  },
+});
 
 function App() {
   const [open, setOpen] = useState(true);
@@ -58,7 +66,7 @@ function App() {
         }}
       >
         <Fade in={open}>
-          <Box sx={style}>
+          <Box sx={modalMainStyle}>
             <Box display='flex' justifyContent='space-between'>
               <Typography
                 id='rules-modal-title'
@@ -69,12 +77,31 @@ function App() {
               >
                 Rules
               </Typography>
-              <IconButton onClick={handleClose} aria-label='show rules'>
+              <IconButton
+                onClick={handleClose}
+                aria-label='show rules'
+                sx={{
+                  [theme.breakpoints.down('sm')]: {
+                    display: 'none',
+                  },
+                }}
+              >
                 <img style={{ alignSelf: 'center' }} src={closeIcon} alt='close icon' />
               </IconButton>
             </Box>
-
             <img src={imageRules} alt='rules' />
+            <IconButton
+              onClick={handleClose}
+              aria-label='show rules'
+              sx={{
+                display: 'none',
+                [theme.breakpoints.down('sm')]: {
+                  display: 'block',
+                },
+              }}
+            >
+              <img style={{ alignSelf: 'center' }} src={closeIcon} alt='close icon' />
+            </IconButton>
           </Box>
         </Fade>
       </Modal>
