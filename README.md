@@ -32,7 +32,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [Solution](https://www.frontendmentor.io/solutions/desktopmobile-solution-using-react-and-material-ui-rywlGOafq)
 - Live Site URL: [App](https://webguy83.github.io/rock-paper-scissors/)
 
 ## My process
