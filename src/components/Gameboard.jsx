@@ -19,7 +19,7 @@ export default function Gameboard({ setScore }) {
   const gameboardStyles = {
     display: 'flex',
     flexDirection: 'column',
-    mt: 12.5,
+    mt: '7vh',
     width: '100%',
   };
 
