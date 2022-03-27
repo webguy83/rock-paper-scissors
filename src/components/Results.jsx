@@ -107,7 +107,7 @@ export default function Results({
           letterSpacing='0.125rem'
           variant='h3'
           align='center'
-          component='p'
+          component='h2'
           sx={headerStyling}
         >
           You {result}!
@@ -130,7 +130,7 @@ export default function Results({
   return (
     <>
       <Box display='flex' height='max-content' justifyContent='center'>
-        <Box sx={pickedStyles}>
+        <Box component='section' sx={pickedStyles}>
           <Typography
             textAlign='center'
             marginBottom={6}
@@ -161,7 +161,7 @@ export default function Results({
         </Box>
         {result && getResultBlock(true)}
 
-        <Box sx={pickedStyles}>
+        <Box component='section' sx={pickedStyles}>
           <Typography
             letterSpacing='0.125rem'
             marginBottom={6}

@@ -1,5 +1,4 @@
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 import { useEffect, useState } from 'react';
 import PlayingArea from './PlayingArea';
 import Results from './Results';
@@ -17,19 +16,6 @@ export default function Gameboard({ setScore }) {
     setSelectedHousePiece(getHousePiece(piecesKeys));
   }, [selectedHousePiece]);
 
-  const hideHeaderStyle = {
-    fontSize: 0,
-    width: 1,
-    height: 1,
-    display: 'inline-block',
-    overflow: 'hidden',
-    position: 'absolute!important',
-    border: '0!important',
-    padding: '0!important',
-    margin: '0!important',
-    clip: 'rect(1px,1px,1px,1px)',
-  };
-
   const gameboardStyles = {
     display: 'flex',
     flexDirection: 'column',
@@ -38,10 +24,7 @@ export default function Gameboard({ setScore }) {
   };
 
   return (
-    <Box component='main' sx={gameboardStyles}>
-      <Typography variant='h1' sx={hideHeaderStyle}>
-        Rock Paper Scissors Lizard Spock
-      </Typography>
+    <Box sx={gameboardStyles}>
       {!selectedPiece && <PlayingArea setSelectedPiece={setSelectedPiece} />}
       {selectedPiece && (
         <Results
