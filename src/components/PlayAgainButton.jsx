@@ -6,8 +6,8 @@ export default styled(Button)(({ theme }) => ({
   borderColor: theme.palette.background.paper,
   backgroundColor: theme.palette.background.paper,
   padding: theme.spacing(0.625, 4.375),
-  fontSize: '1.125rem',
-  letterSpacing: '0.125rem',
+  fontSize: 18,
+  letterSpacing: 2,
   textTransform: 'uppercase',
   '&:hover': {
     color: '#141639',

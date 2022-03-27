@@ -6,7 +6,7 @@ const containerStyles = {
   display: 'flex',
   justifyContent: 'space-between',
   mt: 3,
-  borderWidth: '0.125rem',
+  borderWidth: 2,
   borderStyle: 'solid',
   borderRadius: 5,
   p: (theme) => {
@@ -14,21 +14,19 @@ const containerStyles = {
   },
 };
 
-const scoreBoxStyles = {
+const scoreBoxStyles = (theme) => ({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
   bgcolor: 'background.paper',
-  p: (theme) => {
-    if (theme.breakpoints.up('xs')) {
-      return theme.spacing(0, 4);
-    }
-    return theme.spacing(0, 5);
+  p: theme.spacing(0, 5),
+  [theme.breakpoints.up('xs')]: {
+    p: theme.spacing(0, 4),
   },
   borderRadius: 1.5,
   textTransform: 'uppercase',
-};
+});
 
 export default function Header({ score }) {
   return (
@@ -36,8 +34,8 @@ export default function Header({ score }) {
       <Box
         sx={{
           width: {
-            xs: '5rem',
-            sm: '7rem',
+            xs: 80,
+            sm: 112,
           },
         }}
       >
@@ -51,14 +49,14 @@ export default function Header({ score }) {
       </Box>
 
       <Box sx={scoreBoxStyles}>
-        <Typography letterSpacing='0.125rem' color='neutral.scoreText'>
+        <Typography letterSpacing={2} color='neutral.scoreText'>
           Score
         </Typography>
         <Typography
           sx={{
             fontSize: {
-              xs: '3rem',
-              sm: '3.75rem',
+              xs: 48,
+              sm: 60,
             },
           }}
           component='p'

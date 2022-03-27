@@ -111,6 +111,7 @@ function App() {
           display: 'flex',
           flexDirection: 'column',
           minHeight: '100vh',
+          minWidth: 365,
         }}
       >
         <Header score={score} />

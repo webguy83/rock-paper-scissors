@@ -1,70 +1,120 @@
-# Getting Started with Create React App
+# Frontend Mentor - Rock, Paper, Scissors solution
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a solution to the [Rock, Paper, Scissors challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/rock-paper-scissors-game-pTgwgvgH). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## Available Scripts
+## Table of contents
 
-In the project directory, you can run:
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
 
-### `npm start`
+## Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### The challenge
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Users should be able to:
 
-### `npm test`
+- View the optimal layout for the game depending on their device's screen size
+- Play Rock, Paper, Scissors against the computer
+- Maintain the state of the score after refreshing the browser _(optional)_
+- **Bonus**: Play Rock, Paper, Scissors, Lizard, Spock against the computer _(optional)_
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Screenshot
 
-### `npm run build`
+![](./screenshot.jpg)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Links
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## My process
 
-### `npm run eject`
+### Built with
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- [React](https://reactjs.org/) - JS library
+- [Material UI](https://mui.com/) - For styles/custom components/theming
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### What I learned
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+I took this opportunity to get a firm grasp of the Material UI framework as it has a lot of cool new features that were recently added to the latest version. Custom theming and integration of breakpoints for responsive behaviour was the biggest challenge for me. Some interesting features that really saved time were using the prebuilt Modal component in MUI, which made adding the Rules component very easy and saved a ton of time.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+#####MUI Modal component configurations used:
 
-## Learn More
+```html
+<Modal
+        aria-labelledby='rules-modal-title'
+        aria-describedby='rules-modal-description'
+        open={open}
+        onClose={handleClose}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This made creating the backdrop and popup very simple and straight forward.  No need to add extra JS logic for opening and closing the modal. Most of it is already done by MUI.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#####Custom theming for the Rules button:
 
-### Code Splitting
+```js
+import Button from '@mui/material/Button';
+import { styled } from '@mui/material/styles';
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+export default styled(Button)(({ theme }) => ({
+  color: theme.palette.background.paper,
+  borderColor: theme.palette.background.paper,
+  borderRadius: 8,
+  padding: theme.spacing(0.625, 4.375),
+  fontSize: 18,
+  letterSpacing: 2,
+  '&:hover': {
+    borderColor: theme.palette.background.paper,
+    backgroundColor: 'transparent',
+  },
+}));
+```
 
-### Analyzing the Bundle Size
+The above example uses a MUI **styled** function to allow the user to custom style a MUI pre-made component to the user's liking. It's nice to be able to mix the CSS in with the JS. This allows us to use the Material UI's theme object which has many properties of everything from spacing, breakpoints, font sizes, and so much more. Understanding this takes a lot of time, although with good CSS knowledge, it isn't too bad.  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+#####An example of breakpoints:
+```js
+const pickedStyles = (theme) => ({
+  position: 'relative',
+  zIndex: 10,
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  margin: theme.spacing(0, 2),
+  [theme.breakpoints.up('sm')]: {
+    margin: theme.spacing(0, 4),
+  },
+});
+```
+The line [theme.breakpoints.up('sm')] basically replaces the need to make old fashioned media queries.
 
-### Making a Progressive Web App
+### Continued development
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+I would like to get more involved in creating custom themes/components in MUI. This framework takes a lot of effort to master.
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Useful resources
 
-### Deployment
+- [Material UI docs](https://mui.com/) - As usual the best resources for Material UI is the single source of truth.  99% of the help I needed was here.
+- [Forwarding Refs in React](https://reactjs.org/docs/forwarding-refs.html) - Had to use this feature for the first time when using the Fade component in MUI. Props need to be passed down to the components children in this rare case.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Author
 
-### `npm run build` fails to minify
+- Github - [webguy83](https://github.com/webguy83)
+- Frontend Mentor - [@webguy83](https://www.frontendmentor.io/profile/webguy83)
+- Instagram - [@canadianwebdev83](https://www.instagram.com/canadianwebdev83/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

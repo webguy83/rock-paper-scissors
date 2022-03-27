@@ -92,9 +92,7 @@ export default function PlayingArea({ setSelectedPiece }) {
             sm: 450,
           },
         }}
-      >
-        {/* <img src={pentagon} width='100%' alt='pentagon background' /> */}
-      </Box>
+      ></Box>
     </Box>
   );
 }
