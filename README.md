@@ -33,7 +33,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [App](https://webguy83.github.io/rock-paper-scissors/)
 
 ## My process
 
@@ -49,20 +49,12 @@ I took this opportunity to get a firm grasp of the Material UI framework as it h
 #####MUI Modal component configurations used:
 
 ```html
-<Modal
-        aria-labelledby='rules-modal-title'
-        aria-describedby='rules-modal-description'
-        open={open}
-        onClose={handleClose}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-      >
+<Modal aria-labelledby='rules-modal-title' aria-describedby='rules-modal-description' open={open}
+onClose={handleClose} closeAfterTransition BackdropComponent={Backdrop} BackdropProps={{ timeout:
+500, }} >
 ```
 
-This made creating the backdrop and popup very simple and straight forward.  No need to add extra JS logic for opening and closing the modal. Most of it is already done by MUI.
+This made creating the backdrop and popup very simple and straight forward. No need to add extra JS logic for opening and closing the modal. Most of it is already done by MUI.
 
 #####Custom theming for the Rules button:
 
@@ -84,9 +76,10 @@ export default styled(Button)(({ theme }) => ({
 }));
 ```
 
-The above example uses a MUI **styled** function to allow the user to custom style a MUI pre-made component to the user's liking. It's nice to be able to mix the CSS in with the JS. This allows us to use the Material UI's theme object which has many properties of everything from spacing, breakpoints, font sizes, and so much more. Understanding this takes a lot of time, although with good CSS knowledge, it isn't too bad.  
+The above example uses a MUI **styled** function to allow the user to custom style a MUI pre-made component to the user's liking. It's nice to be able to mix the CSS in with the JS. This allows us to use the Material UI's theme object which has many properties of everything from spacing, breakpoints, font sizes, and so much more. Understanding this takes a lot of time, although with good CSS knowledge, it isn't too bad.
 
 #####An example of breakpoints:
+
 ```js
 const pickedStyles = (theme) => ({
   position: 'relative',
@@ -100,16 +93,16 @@ const pickedStyles = (theme) => ({
   },
 });
 ```
+
 The line [theme.breakpoints.up('sm')] basically replaces the need to make old fashioned media queries.
 
 ### Continued development
 
 I would like to get more involved in creating custom themes/components in MUI. This framework takes a lot of effort to master.
 
-
 ### Useful resources
 
-- [Material UI docs](https://mui.com/) - As usual the best resources for Material UI is the single source of truth.  99% of the help I needed was here.
+- [Material UI docs](https://mui.com/) - As usual the best resources for Material UI is the single source of truth. 99% of the help I needed was here.
 - [Forwarding Refs in React](https://reactjs.org/docs/forwarding-refs.html) - Had to use this feature for the first time when using the Fade component in MUI. Props need to be passed down to the components children in this rare case.
 
 ## Author
@@ -117,4 +110,3 @@ I would like to get more involved in creating custom themes/components in MUI. T
 - Github - [webguy83](https://github.com/webguy83)
 - Frontend Mentor - [@webguy83](https://www.frontendmentor.io/profile/webguy83)
 - Instagram - [@canadianwebdev83](https://www.instagram.com/canadianwebdev83/)
-
