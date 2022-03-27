@@ -56,7 +56,6 @@ function App() {
       <CssBaseline />
       <Modal
         aria-labelledby='rules-modal-title'
-        aria-describedby='rules-modal-description'
         open={open}
         onClose={handleClose}
         closeAfterTransition
