@@ -115,6 +115,13 @@ function App() {
           minWidth: 365,
         }}
       >
+        <Box sx={{ color: 'background.paper', textAlign: 'center' }}>
+          Challenge by
+          <a href='https://www.frontendmentor.io?ref=challenge' target='_blank' rel='noreferrer'>
+            Frontend Mentor
+          </a>
+          . Coded by <a href='https://github.com/webguy83/rock-paper-scissors'>Curtis</a>.
+        </Box>
         <Header score={score} />
         <Typography variant='h1' sx={hideHeaderStyle}>
           Rock Paper Scissors Lizard Spock
