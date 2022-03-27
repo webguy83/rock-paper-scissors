@@ -17,6 +17,7 @@ import closeIcon from './images/icon-close.svg';
 import imageRules from './images/image-rules-bonus.svg';
 import IconButton from '@mui/material/IconButton';
 import { hideHeaderStyle } from 'utils';
+import Link from '@mui/material/Link';
 
 const modalMainStyle = (theme) => ({
   position: 'absolute',
@@ -116,11 +117,15 @@ function App() {
         }}
       >
         <Box sx={{ color: 'background.paper', textAlign: 'center' }}>
-          Challenge by
-          <a href='https://www.frontendmentor.io?ref=challenge' target='_blank' rel='noreferrer'>
+          Challenge by&nbsp;
+          <Link href='https://www.frontendmentor.io?ref=challenge' target='_blank' rel='noreferrer'>
             Frontend Mentor
-          </a>
-          . Coded by <a href='https://github.com/webguy83/rock-paper-scissors'>Curtis</a>.
+          </Link>
+          . Coded by{' '}
+          <Link href='https://github.com/webguy83' target='_blank' rel='noreferrer'>
+            Curtis
+          </Link>
+          .
         </Box>
         <Header score={score} />
         <Typography variant='h1' sx={hideHeaderStyle}>
