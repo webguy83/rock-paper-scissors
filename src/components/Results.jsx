@@ -129,7 +129,7 @@ export default function Results({
 
   return (
     <>
-      <Box display='flex' height='max-content'>
+      <Box display='flex' height='max-content' justifyContent='center'>
         <Box sx={pickedStyles}>
           <Typography
             textAlign='center'

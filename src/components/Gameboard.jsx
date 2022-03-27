@@ -19,8 +19,8 @@ export default function Gameboard({ setScore }) {
   const gameboardStyles = {
     display: 'flex',
     flexDirection: 'column',
-    m: 'auto',
-    height: '31.25rem',
+    mt: '10vh',
+    width: '100%',
   };
 
   return (
