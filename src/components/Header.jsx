@@ -30,7 +30,7 @@ const scoreBoxStyles = (theme) => ({
 
 export default function Header({ score }) {
   return (
-    <Box sx={containerStyles} borderColor='neutral.headerOutline'>
+    <Box component='header' sx={containerStyles} borderColor='neutral.headerOutline'>
       <Box
         sx={{
           width: {

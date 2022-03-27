@@ -24,7 +24,7 @@ export default function Gameboard({ setScore }) {
   };
 
   return (
-    <Box sx={gameboardStyles}>
+    <Box component='main' sx={gameboardStyles}>
       {!selectedPiece && <PlayingArea setSelectedPiece={setSelectedPiece} />}
       {selectedPiece && (
         <Results

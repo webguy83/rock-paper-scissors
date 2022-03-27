@@ -105,6 +105,7 @@ function App() {
         </Fade>
       </Modal>
       <Container
+        component='section'
         maxWidth='md'
         sx={{
           display: 'flex',
@@ -117,6 +118,7 @@ function App() {
         <Gameboard setScore={setScore} />
       </Container>
       <Box
+        component='footer'
         sx={{
           position: 'fixed',
           display: 'flex',
