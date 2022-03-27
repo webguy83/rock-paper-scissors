@@ -38,7 +38,7 @@ const modalMainStyle = (theme) => ({
 });
 
 function App() {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [score, setScore] = useState(0);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
