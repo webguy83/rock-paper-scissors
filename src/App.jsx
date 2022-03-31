@@ -3,7 +3,6 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
-import Container from '@mui/material/Container';
 import Header from 'components/Header';
 import Gameboard from 'components/Gameboard';
 import { theme } from './utils';
@@ -17,7 +16,6 @@ import closeIcon from './images/icon-close.svg';
 import imageRules from './images/image-rules-bonus.svg';
 import IconButton from '@mui/material/IconButton';
 import { hideHeaderStyle } from 'utils';
-import Link from '@mui/material/Link';
 
 const modalMainStyle = (theme) => ({
   position: 'absolute',
@@ -106,46 +104,21 @@ function App() {
           </Box>
         </Fade>
       </Modal>
-      <Container
-        component='main'
-        maxWidth='md'
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          minHeight: '100vh',
-          minWidth: 365,
-        }}
-      >
-        <Box sx={{ color: 'background.paper', textAlign: 'center' }}>
-          Challenge by&nbsp;
-          <Link href='https://www.frontendmentor.io?ref=challenge' target='_blank' rel='noreferrer'>
-            Frontend Mentor
-          </Link>
-          . Coded by{' '}
-          <Link href='https://github.com/webguy83' target='_blank' rel='noreferrer'>
-            Curtis
-          </Link>
-          .
-        </Box>
-        <Header score={score} />
-        <Typography variant='h1' sx={hideHeaderStyle}>
-          Rock Paper Scissors Lizard Spock
-        </Typography>
-        <Gameboard setScore={setScore} />
-      </Container>
+
+      <Header score={score} />
+      <Typography variant='h1' sx={hideHeaderStyle}>
+        Rock Paper Scissors Lizard Spock
+      </Typography>
+      <Gameboard setScore={setScore} />
       <Box
         component='footer'
-        sx={{
-          position: 'fixed',
+        sx={(theme) => ({
           display: 'flex',
-          justifyContent: 'right',
+          justifyContent: 'flex-end',
           [theme.breakpoints.down('sm')]: {
             justifyContent: 'center',
           },
-          bottom: 0,
-          width: '100%',
-          p: 4,
-        }}
+        })}
       >
         <RulesButton variant='outlined' disableRipple onClick={handleOpen}>
           Rules

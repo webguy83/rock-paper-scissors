@@ -16,15 +16,8 @@ export default function Gameboard({ setScore }) {
     setSelectedHousePiece(getHousePiece(piecesKeys));
   }, [selectedHousePiece]);
 
-  const gameboardStyles = {
-    display: 'flex',
-    flexDirection: 'column',
-    mt: '7vh',
-    width: '100%',
-  };
-
   return (
-    <Box sx={gameboardStyles}>
+    <Box component='main'>
       {!selectedPiece && <PlayingArea setSelectedPiece={setSelectedPiece} />}
       {selectedPiece && (
         <Results

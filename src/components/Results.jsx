@@ -117,7 +117,7 @@ export default function Results({
             setSelectedPiece(null);
             setSelectedHousePiece(null);
           }}
-          sx={{ mt: 2 }}
+          sx={{ mt: 2, alignSelf: 'center' }}
           variant='contained'
           disableRipple
         >
