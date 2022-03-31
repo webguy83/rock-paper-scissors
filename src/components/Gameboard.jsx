@@ -3,8 +3,6 @@ import { useEffect, useState } from 'react';
 import PlayingArea from './PlayingArea';
 import Results from './Results';
 import { pieces } from '../utils';
-import { hideHeaderStyle } from 'utils';
-import Typography from '@mui/material/Typography';
 
 export default function Gameboard({ setScore }) {
   const [selectedPiece, setSelectedPiece] = useState(null);
@@ -20,9 +18,6 @@ export default function Gameboard({ setScore }) {
 
   return (
     <Box component='main'>
-      <Typography variant='h1' sx={hideHeaderStyle}>
-        Rock Paper Scissors Lizard Spock
-      </Typography>
       {!selectedPiece && <PlayingArea setSelectedPiece={setSelectedPiece} />}
       {selectedPiece && (
         <Results

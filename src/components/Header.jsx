@@ -38,17 +38,21 @@ export default function Header({ score }) {
         alignSelf: 'center',
       }}
     >
-      <Box sx={{ color: 'background.paper', textAlign: 'center' }}>
+      <Typography
+        variant='body1'
+        component='h1'
+        sx={{ color: 'background.paper', textAlign: 'center' }}
+      >
         Challenge by&nbsp;
         <Link href='https://www.frontendmentor.io?ref=challenge' target='_blank' rel='noreferrer'>
           Frontend Mentor
         </Link>
-        . Coded by{' '}
+        . Coded by&nbsp;
         <Link href='https://github.com/webguy83' target='_blank' rel='noreferrer'>
           Curtis
         </Link>
         .
-      </Box>
+      </Typography>
       <Box sx={containerStyles} borderColor='neutral.headerOutline'>
         <Box
           sx={{
