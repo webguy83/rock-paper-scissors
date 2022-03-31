@@ -15,7 +15,6 @@ import Typography from '@mui/material/Typography';
 import closeIcon from './images/icon-close.svg';
 import imageRules from './images/image-rules-bonus.svg';
 import IconButton from '@mui/material/IconButton';
-import { hideHeaderStyle } from 'utils';
 
 const modalMainStyle = (theme) => ({
   position: 'absolute',
@@ -106,9 +105,6 @@ function App() {
       </Modal>
 
       <Header score={score} />
-      <Typography variant='h1' sx={hideHeaderStyle}>
-        Rock Paper Scissors Lizard Spock
-      </Typography>
       <Gameboard setScore={setScore} />
       <Box
         component='footer'
